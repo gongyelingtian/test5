@@ -59,3 +59,34 @@
 #### 设计程序完成上述的业务逻辑处理，并且把“古诗处理后的输出”结果存储到学生基本信息所在的文本文件A中。
 
 # 四，核心代码
+
+``` JAVA
+ public static synchronized String readFile(String path) throws IOException {
+        File f = new File(path);
+        if (!f.exists() || !f.isFile()) {
+            return null;
+        }
+        StringBuilder contents = new StringBuilder();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(f))) {
+            String line;
+            boolean firstLine = true;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (firstLine) {
+                    firstLine = false;
+                } 
+                else {
+                    contents.append("\n");
+                }
+                contents.append(line);
+            }
+```
+
+# 五，实验结果
+
+!<img src="结果1.JPG">
+
+!<img src="结果2.JPG">
+
+# 六，实验感想
+
+本次实验对异常处理有了更深刻的理解，但在本次实验中，对main得编辑出现了很大错误，导致其内容无法显示，其他类也出现了大量错误，更改多次以至于面目全非，所以尝试一同学的main类为蓝本进行更改，尝试多次后无报错且运行正常，但在更改的同时也改了许多语句的用法，导致了我出现了一些无法理解的问题，在接下来的时间了还需要向老师和同学求解。
